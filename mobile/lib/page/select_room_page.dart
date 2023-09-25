@@ -24,6 +24,17 @@ class _SelectRoomPageState extends State<SelectRoomPage> {
 
   @override
   Widget build(BuildContext context) {
+    void handleSearch() {
+      context.read<SelectRoomController>().getRooms();
+    }
+
+    bool shouldDisableSearchButton() {
+      SelectRoomController controller = context.watch<SelectRoomController>();
+      return controller.pickedDate == null ||
+          controller.startTime == null ||
+          controller.endTime == null;
+    }
+
     return Scaffold(
       // backgroundColor: Colors.green,
       body: Column(
@@ -175,8 +186,8 @@ class _SelectRoomPageState extends State<SelectRoomPage> {
                   width: double.infinity,
                   height: 45,
                   child: PButton(
-                    onPressed: () =>
-                        context.read<SelectRoomController>().getRooms(),
+                    onPressed: handleSearch,
+                    disabled: shouldDisableSearchButton(),
                     child: const Text(
                       "Search",
                     ),

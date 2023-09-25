@@ -67,13 +67,13 @@ List<Booking> mockCancelled = [
 List<Booking> mockCompleted = [];
 
 class MyBookingHistoryController with ChangeNotifier {
-  List<Booking>? _reserved;
+  List<Booking>? _reserved = [];
   List<Booking>? get reserved => _reserved;
 
-  List<Booking>? _cancelled;
+  List<Booking>? _cancelled = [];
   List<Booking>? get cancelled => _cancelled;
 
-  List<Booking>? _completed;
+  List<Booking>? _completed = [];
   List<Booking>? get completed => _completed;
 
   void setReserved(List<Booking> newReserved) {
@@ -91,5 +91,17 @@ class MyBookingHistoryController with ChangeNotifier {
     notifyListeners();
   }
 
-  void confirmBooking(Room room, DateTime startTime, DateTime endtime) {}
+  void addReserved(Booking booking) {
+    _reserved?.add(booking);
+  }
+
+  void cancelBooking(String bookingNumber) {
+    Booking? bookingToCancel =
+        reserved?.firstWhere((element) => element.number == bookingNumber);
+    if (bookingToCancel != null) {
+      _reserved?.remove(bookingToCancel);
+      _cancelled?.add(bookingToCancel);
+    }
+    notifyListeners();
+  }
 }

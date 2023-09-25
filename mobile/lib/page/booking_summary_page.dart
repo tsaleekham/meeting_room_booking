@@ -5,6 +5,7 @@ import 'package:meeting_room_booking/common/p_button.dart';
 import 'package:meeting_room_booking/common/p_outlined_button.dart';
 import 'package:meeting_room_booking/controller/booking_success_controller.dart';
 import 'package:meeting_room_booking/controller/booking_summary_controller.dart';
+import 'package:meeting_room_booking/controller/my_booking_history_controller.dart';
 import 'package:meeting_room_booking/controller/select_room_controller.dart';
 import 'package:meeting_room_booking/model/booking.dart';
 import 'package:meeting_room_booking/model/room.dart';
@@ -19,6 +20,33 @@ class BookingSummaryPage extends StatelessWidget {
     Room? currentRoom = context.watch<BookingSummaryController>().room;
     String roomNumber = currentRoom?.name ?? "";
     String capacity = "${currentRoom?.capacity} Guests max";
+
+    void handleConfirmBooking() {
+      DateTime dStartTime =
+          context.read<SelectRoomController>().dStartTime ?? DateTime.now();
+      DateTime dEndTime =
+          context.read<SelectRoomController>().dStartTime ?? DateTime.now();
+      if (currentRoom != null) {
+        Booking? booked =
+            context.read<BookingSuccessController>().confirmBooking(
+                  currentRoom,
+                  dStartTime,
+                  dEndTime,
+                );
+
+        if (booked != null) {
+          context.read<MyBookingHistoryController>().addReserved(booked);
+        }
+
+        context.read<SelectRoomController>().clearSelectRoomPageFields();
+
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) {
+            return const BookingSuccessPage();
+          },
+        ));
+      }
+    }
 
     return Scaffold(
       body: Stack(
@@ -212,29 +240,7 @@ class BookingSummaryPage extends StatelessWidget {
                     width: double.infinity,
                     height: 75,
                     child: PButton(
-                      onPressed: () {
-                        DateTime dStartTime =
-                            context.read<SelectRoomController>().dStartTime ??
-                                DateTime.now();
-                        DateTime dEndTime =
-                            context.read<SelectRoomController>().dStartTime ??
-                                DateTime.now();
-                        if (currentRoom != null) {
-                          Booking? booked = context
-                              .read<BookingSuccessController>()
-                              .confirmBooking(
-                                currentRoom,
-                                dStartTime,
-                                dEndTime,
-                              );
-
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return const BookingSuccessPage();
-                            },
-                          ));
-                        }
-                      },
+                      onPressed: handleConfirmBooking,
                       child: const Text(
                         "Confirm Booking",
                         style: TextStyle(

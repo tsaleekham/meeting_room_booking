@@ -4,11 +4,13 @@ class PButton extends StatelessWidget {
   final void Function()? onPressed;
   final Widget child;
   final MaterialStateProperty<Color?>? backgroundColor;
+  final bool disabled;
   const PButton({
     super.key,
     required this.onPressed,
     required this.child,
     this.backgroundColor,
+    this.disabled = false,
   });
 
   @override
@@ -27,7 +29,7 @@ class PButton extends StatelessWidget {
               Color(0xFF5CC99B),
             ),
       ),
-      onPressed: onPressed,
+      onPressed: disabled ? null : onPressed,
       child: child,
     );
   }

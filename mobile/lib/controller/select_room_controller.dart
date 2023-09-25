@@ -58,27 +58,38 @@ class SelectRoomController with ChangeNotifier {
   }
 
   Future<void> getRooms() async {
-    try {
-      // Response<List<dynamic>> response =
-      //     await dio.get("http://localhost:8080/rooms");
-      // if (response.statusCode == 200) {
-      //   var rooms = response.data ?? [];
-      //   List<Room> roomListTemp = [];
-      //   for (var room in rooms) {
-      //     roomListTemp.add(
-      //       Room.fromJson(room),
-      //     );
-      //   }
-      //   setRoomList(roomListTemp);
-      // }
+    // Mock rooms
+    if (pickedDate != null && startTime != null && endTime != null) {
       setRoomList([
         Room(id: 0, name: "small room", capacity: 7),
         Room(id: 1, name: "big room", capacity: 20),
         Room(id: 2, name: "windows room", capacity: 10),
       ]);
-    } catch (e) {
-      print("in catch error!");
-      print(e);
     }
+    // try {
+    //   Response<List<dynamic>> response =
+    //       await dio.get("http://localhost:8080/rooms");
+    //   if (response.statusCode == 200) {
+    //     var rooms = response.data ?? [];
+    //     List<Room> roomListTemp = [];
+    //     for (var room in rooms) {
+    //       roomListTemp.add(
+    //         Room.fromJson(room),
+    //       );
+    //     }
+    //     setRoomList(roomListTemp);
+    //   }
+    // } catch (e) {
+    //   print("in catch error!");
+    //   print(e);
+    // }
+  }
+
+  void clearSelectRoomPageFields() {
+    _pickedDate = DateTime.now();
+    _startTime = null;
+    _endTime = null;
+    _roomList = [];
+    notifyListeners();
   }
 }

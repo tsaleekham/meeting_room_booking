@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:meeting_room_booking/common/p_button.dart';
 import 'package:meeting_room_booking/common/p_outlined_button.dart';
+import 'package:meeting_room_booking/controller/my_booking_history_controller.dart';
 import 'package:meeting_room_booking/model/booking.dart';
+import 'package:provider/provider.dart';
 
 class ReservedRoomCard extends StatelessWidget {
   final Booking booking;
@@ -13,6 +15,11 @@ class ReservedRoomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void handleCancelBooking() {
+      context.read<MyBookingHistoryController>().cancelBooking(booking.number);
+      Navigator.of(context).pop();
+    }
+
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 20,
@@ -144,9 +151,7 @@ class ReservedRoomCard extends StatelessWidget {
                                             MaterialStatePropertyAll(
                                           Theme.of(context).colorScheme.error,
                                         ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
+                                        onPressed: handleCancelBooking,
                                         child: const Text(
                                           "Yes, Cancel booking",
                                           style: TextStyle(
