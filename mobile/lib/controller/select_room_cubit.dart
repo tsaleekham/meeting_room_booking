@@ -48,6 +48,28 @@ class SelectRoomState extends Equatable {
     );
   }
 
+  SelectRoomState copyWithNullable({
+    DateTime? pickedDate,
+    TimeOfDay? startTime,
+    DateTime? dStartTime,
+    TimeOfDay? endTime,
+    DateTime? dEndTime,
+    List<Room>? roomList,
+    Room? selectedRoom,
+    Booking? successBooking,
+  }) {
+    return SelectRoomState(
+      pickedDate: pickedDate,
+      roomList: roomList,
+      startTime: startTime,
+      dStartTime: dStartTime,
+      endTime: endTime,
+      dEndTime: dEndTime,
+      selectedRoom: selectedRoom,
+      successBooking: successBooking,
+    );
+  }
+
   @override
   List<Object?> get props => [
         pickedDate,
@@ -157,11 +179,15 @@ class SelectRoomCubit extends Cubit<SelectRoomState> {
 
   void clearSelectRoomPageFields() {
     emit(
-      state.copyWith(
+      state.copyWithNullable(
         pickedDate: DateTime.now(),
         startTime: null,
         endTime: null,
         roomList: [],
+        dEndTime: null,
+        dStartTime: null,
+        selectedRoom: state.selectedRoom,
+        successBooking: state.successBooking,
       ),
     );
   }
