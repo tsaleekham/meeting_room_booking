@@ -43,7 +43,6 @@ class MyAppBar extends StatelessWidget {
         SizedBox(
           height: 150,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -51,7 +50,6 @@ class MyAppBar extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(
                       right: 22,
-                      top: 50,
                     ),
                     child: InkWell(
                       onTap: () {
@@ -59,10 +57,12 @@ class MyAppBar extends StatelessWidget {
                           (route) => route.isFirst,
                         );
                       },
-                      child: const Text(
-                        "Logout",
-                        style: TextStyle(
-                          color: Colors.white,
+                      child: const SafeArea(
+                        child: Text(
+                          "Logout",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -73,7 +73,6 @@ class MyAppBar extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                      bottom: 16,
                       left: 22,
                     ),
                     child: Text(
@@ -83,7 +82,6 @@ class MyAppBar extends StatelessWidget {
                         fontSize: 28,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        height: 1.5,
                       ),
                     ),
                   ),
