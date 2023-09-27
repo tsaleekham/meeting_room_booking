@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meeting_room_booking/controller/application_cubit.dart';
 import 'package:meeting_room_booking/controller/select_room_cubit.dart';
-import 'package:meeting_room_booking/page/meeting_room_landing_page.dart';
 import 'package:meeting_room_booking/router.dart';
 
 void main() {
