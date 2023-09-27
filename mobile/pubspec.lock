@@ -83,6 +83,59 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< Updated upstream
+=======
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  fuchsia_remote_debug_protocol:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  gherkin:
+    dependency: transitive
+    description:
+      name: gherkin
+      sha256: "7c835be5c28dc50f753caa30b4d8e2204d0617dc56fc019dca0fc70279d779b7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.8"
+  glob:
+    dependency: transitive
+    description:
+      name: glob
+      sha256: "0e7014b3b7d4dac1ca4d6114f82bf1782ee86745b9b42a92c9289c23d8a0ab63"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.2"
+  go_router:
+    dependency: "direct main"
+    description:
+      name: go_router
+      sha256: "24d89757552a78615d6e65c7bc206740f94ca95a12ecf189d883394d34c9d9bd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "11.0.0"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      sha256: "2aa08ce0341cc9b354a498388e30986515406668dbcc4f7c950c3e715496693b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.2"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.1"
+>>>>>>> Stashed changes
   js:
     dependency: transitive
     description:
@@ -194,3 +247,7 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=2.19.6 <3.0.0"
+<<<<<<< Updated upstream
+=======
+  flutter: ">=3.7.0"
+>>>>>>> Stashed changes
