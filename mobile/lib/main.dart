@@ -6,6 +6,7 @@ import 'package:meeting_room_booking/page/meeting_room_landing_page.dart';
 import 'package:meeting_room_booking/router.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
