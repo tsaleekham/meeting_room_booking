@@ -102,7 +102,9 @@ class MeetingRoomLandingPage extends StatelessWidget {
                           context.push("/booking_history");
                         },
                         child: const Text(
+                          key: Key("login_button"),
                           'Login',
+                          semanticsLabel: "Login",
                           style: TextStyle(
                             fontFamily: 'Open Sans',
                             fontSize: 16,
