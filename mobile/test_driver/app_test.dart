@@ -15,8 +15,11 @@ Future<void> main() async {
     // ..hooks = [HookExample()]
     // ..stepDefinitions = [TapButtonNTimesStep(), GivenIPickAColour()]
     ..stepDefinitions = [
-      GivenIAmOnTheLoginScreen(),
-      ThenIShouldSeeTheLoginButton()
+      givenIAmOnTheLoginScreen(),
+      thenIShouldSeeThe(),
+      whenIClickThe(),
+      whenIClickTheText(),
+      thenIShouldSeeTheText(),
     ]
     // ..customStepParameterDefinitions = [ColourParameter()]
     ..restartAppBetweenScenarios = true

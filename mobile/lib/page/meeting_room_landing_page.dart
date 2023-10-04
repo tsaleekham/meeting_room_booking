@@ -89,22 +89,16 @@ class MeetingRoomLandingPage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       height: 75,
                       child: ElevatedButton(
+                        key: const Key("login_button"),
                         style: ElevatedButton.styleFrom(
                           splashFactory: NoSplash.splashFactory,
                           backgroundColor: const Color(0xFF5CC99B),
                         ),
                         onPressed: () {
-                          // Navigator.push(context, MaterialPageRoute(
-                          //   builder: (context) {
-                          //     return const MyBookingHistoryPage();
-                          //   },
-                          // ));
                           context.push("/booking_history");
                         },
                         child: const Text(
-                          key: Key("login_button"),
                           'Login',
-                          semanticsLabel: "Login",
                           style: TextStyle(
                             fontFamily: 'Open Sans',
                             fontSize: 16,

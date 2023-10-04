@@ -250,6 +250,7 @@ class BookingSummaryPage extends StatelessWidget {
                         },
                         builder: (context, state) {
                           return PButton(
+                            key: const Key("confirm_booking_button"),
                             onPressed: () => handleConfirmBooking(
                               state.selectedRoom,
                               state.dStartTime,

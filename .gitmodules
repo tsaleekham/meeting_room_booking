@@ -1,0 +1,3 @@
+[submodule "mobile/mobile/flutter_gherkin"]
+	path = mobile/mobile/flutter_gherkin
+	url = https://github.com/tsaleekham/flutter_gherkin.git

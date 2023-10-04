@@ -193,14 +193,8 @@ class MyBookingHistoryPage extends StatelessWidget {
             child: SizedBox(
               height: 75,
               child: PButton(
+                key: const Key("make_new_booking_button"),
                 onPressed: () {
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //     builder: (context) {
-                  //       return const SelectRoomPage();
-                  //     },
-                  //   ),
-                  // );
                   context.push("/select_room");
                 },
                 child: const Text(

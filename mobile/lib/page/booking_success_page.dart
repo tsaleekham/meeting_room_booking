@@ -61,7 +61,7 @@ class BookingSuccessPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Text(
-                      "You Booking No. is",
+                      "Your Booking No. is",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -97,6 +97,7 @@ class BookingSuccessPage extends StatelessWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: PButton(
+                  key: const Key("my_booking_history"),
                   onPressed: () {
                     context.push("/booking_history");
                   },

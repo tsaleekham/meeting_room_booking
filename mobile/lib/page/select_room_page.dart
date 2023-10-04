@@ -91,18 +91,25 @@ class SelectRoomPage extends StatelessWidget {
                             width: double.infinity,
                             height: 45,
                             child: PButton(
-                                onPressed: () => showTimePicker(
-                                      context: context,
-                                      initialTime: TimeOfDay.now(),
-                                    ).then((selectedStartTime) => {
-                                          if (selectedStartTime != null)
-                                            {
-                                              context
-                                                  .read<SelectRoomCubit>()
-                                                  .setStartTime(
-                                                      selectedStartTime)
-                                            }
-                                        }),
+                                key: const Key("start_time_button"),
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return TimePickerDialog(
+                                        initialTime: TimeOfDay.now(),
+                                        key: const Key("start_time_dialog"),
+                                      );
+                                    },
+                                  ).then((selectedStartTime) => {
+                                        if (selectedStartTime != null)
+                                          {
+                                            context
+                                                .read<SelectRoomCubit>()
+                                                .setStartTime(selectedStartTime)
+                                          }
+                                      });
+                                },
                                 child: BlocSelector<SelectRoomCubit,
                                     SelectRoomState, TimeOfDay?>(
                                   selector: (state) => state.startTime,
@@ -137,17 +144,25 @@ class SelectRoomPage extends StatelessWidget {
                             width: double.infinity,
                             height: 45,
                             child: PButton(
-                                onPressed: () => showTimePicker(
-                                      context: context,
-                                      initialTime: TimeOfDay.now(),
-                                    ).then((selectedEndTime) => {
-                                          if (selectedEndTime != null)
-                                            {
-                                              context
-                                                  .read<SelectRoomCubit>()
-                                                  .setEndTime(selectedEndTime)
-                                            }
-                                        }),
+                                key: const Key("end_time_button"),
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return TimePickerDialog(
+                                        initialTime: TimeOfDay.now(),
+                                        key: const Key("end_time_dialog"),
+                                      );
+                                    },
+                                  ).then((selectedEndTime) => {
+                                        if (selectedEndTime != null)
+                                          {
+                                            context
+                                                .read<SelectRoomCubit>()
+                                                .setEndTime(selectedEndTime)
+                                          }
+                                      });
+                                },
                                 child: BlocSelector<SelectRoomCubit,
                                     SelectRoomState, TimeOfDay?>(
                                   selector: (state) => state.endTime,
@@ -182,6 +197,7 @@ class SelectRoomPage extends StatelessWidget {
                       },
                       builder: (context, state) {
                         return PButton(
+                          key: const Key("search_meeting_room_button"),
                           onPressed: handleSearch,
                           disabled: state.pickedDate == null ||
                               state.startTime == null ||
@@ -224,6 +240,7 @@ class SelectRoomPage extends StatelessWidget {
                   return SizedBox(
                     height: 75,
                     child: POutlinedButton(
+                      key: Key("select_room_$index"),
                       onPressed: () {
                         if (room != null) {
                           context.read<SelectRoomCubit>().setSelectedRoom(room);
